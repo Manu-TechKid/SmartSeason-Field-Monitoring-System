@@ -2,8 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { prisma } from '../db';
 import { authenticate, requireAdmin, AuthRequest } from '../middleware/auth';
-import { computeFieldStatus, FieldStage } from '../utils/status';
-import { FieldStatus } from '@prisma/client';
+import { computeFieldStatus } from '../utils/status';
 
 const router = Router();
 
@@ -102,7 +101,7 @@ router.post('/', authenticate, requireAdmin, async (req: AuthRequest, res) => {
         location: data.location,
         size: data.size,
         agentId: data.agentId,
-        status: FieldStatus.ACTIVE
+        status: 'ACTIVE'
       },
       include: {
         agent: { select: { id: true, name: true, email: true } }
@@ -177,13 +176,13 @@ router.post('/:id/updates', authenticate, async (req: AuthRequest, res) => {
         data: {
           fieldId: req.params.id,
           agentId: req.user!.id,
-          stage: stage as FieldStage,
+          stage: stage,
           notes
         }
       }),
       prisma.field.update({
         where: { id: req.params.id },
-        data: { stage: stage as FieldStage }
+        data: { stage: stage }
       })
     ]);
     

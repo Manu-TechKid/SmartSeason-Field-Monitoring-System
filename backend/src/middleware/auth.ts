@@ -1,12 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { UserRole } from '../types';
 
 interface AuthRequest extends Request {
   user?: {
     id: string;
     email: string;
-    role: UserRole;
+    role: string;
     name: string;
   };
 }
@@ -30,7 +29,7 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
 };
 
 export const requireAdmin = (req: AuthRequest, res: Response, next: NextFunction) => {
-  if (req.user?.role !== UserRole.ADMIN) {
+  if (req.user?.role !== 'ADMIN') {
     return res.status(403).json({ error: 'Access denied. Admin only.' });
   }
   next();
