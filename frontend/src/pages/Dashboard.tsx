@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../api/client';
 import { DashboardStats } from '../types';
-import { StatusBadge, StageBadge } from '../components/StatusBadge';
+import { StageBadge } from '../components/StatusBadge';
 import { 
   Sprout, 
   AlertTriangle, 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { Field, FieldStage } from '../types';
@@ -13,14 +12,11 @@ import {
   MoreVertical,
   Edit2,
   Trash2,
-  CheckCircle2,
-  X,
-  Filter
+  X
 } from 'lucide-react';
 
 export function Fields() {
   const { user } = useAuth();
-  const navigate = useNavigate();
   const [fields, setFields] = useState<Field[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
