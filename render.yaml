@@ -3,7 +3,7 @@ services:
     name: smartseason-api
     runtime: node
     rootDir: backend
-    buildCommand: npm install prisma @prisma/client && npx prisma generate
+    buildCommand: npm install && npx prisma generate && npm run build
     startCommand: npm start
     envVars:
       - key: DATABASE_URL
