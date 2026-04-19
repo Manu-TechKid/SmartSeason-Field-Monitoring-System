@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
 import { prisma } from '../db';
-import { UserRole } from '../types';
 
 const router = Router();
 
@@ -73,7 +72,7 @@ router.post('/register', async (req, res) => {
         email,
         password: hashedPassword,
         name,
-        role: role as UserRole
+        role: role
       }
     });
     
