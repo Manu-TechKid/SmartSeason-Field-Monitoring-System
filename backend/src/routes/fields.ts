@@ -9,7 +9,7 @@ const router = Router();
 const createFieldSchema = z.object({
   name: z.string().min(1),
   cropType: z.string().min(1),
-  plantingDate: z.string().datetime(),
+  plantingDate: z.string(),
   location: z.string().optional(),
   size: z.number().positive().optional(),
   agentId: z.string().uuid().optional()

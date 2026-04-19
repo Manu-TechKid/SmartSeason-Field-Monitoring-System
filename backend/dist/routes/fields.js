@@ -9,7 +9,7 @@ const router = (0, express_1.Router)();
 const createFieldSchema = zod_1.z.object({
     name: zod_1.z.string().min(1),
     cropType: zod_1.z.string().min(1),
-    plantingDate: zod_1.z.string().datetime(),
+    plantingDate: zod_1.z.string(),
     location: zod_1.z.string().optional(),
     size: zod_1.z.number().positive().optional(),
     agentId: zod_1.z.string().uuid().optional()
